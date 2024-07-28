@@ -4,21 +4,24 @@ import { useState } from 'react';
 import { Container } from '@mui/material';
 
 const App = () => {
-  
   const randomCard = () => {
-    const index = Math.round(Math.random(0, acronyms.length - 1) * 100);
-    return {...acronyms[index]};
+    const index = Math.floor(Math.random() * acronyms.length - 1);
+    return acronyms[index];
   }
 
   const [currentCard, setCurrentCard] = useState(randomCard());
 
+  const nextCard = () => {
+    setCurrentCard(randomCard());
+  }
+  
   return (
     <Container maxWidth="sm" sx={{paddingTop: 2}}>
       <Flashcard 
-        acronym={currentCard.acronym} 
-        fullform={currentCard.fullform} 
-        definition={currentCard.definition} 
-        next={() => setCurrentCard(randomCard())} 
+        acronym={currentCard?.acronym} 
+        fullform={currentCard?.fullform} 
+        definition={currentCard?.definition} 
+        next={() => nextCard()} 
       />
     </Container>
   );
