@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import acronyms from './syo-701-acronyms';
+import Flashcard from './Flashcard';
+import { useState } from 'react';
+import { Box } from '@mui/material';
 
-function App() {
+const App = () => {
+  
+  const randomCard = () => {
+    const index = Math.round(Math.random(0, acronyms.length - 1) * 100);
+    return {...acronyms[index]};
+  }
+
+  const [currentCard, setCurrentCard] = useState(randomCard());
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box sx={{width: 500, height: '100%', marginX: 'auto', padding: 3, backgroundColor: ''}}>
+      <Flashcard 
+        acronym={currentCard.acronym} 
+        fullform={currentCard.fullform} 
+        definition={currentCard.definition} 
+        next={() => setCurrentCard(randomCard())} 
+      />
+    </Box>
   );
 }
 
