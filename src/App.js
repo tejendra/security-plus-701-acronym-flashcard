@@ -1,7 +1,7 @@
 import acronyms from './syo-701-acronyms';
 import Flashcard from './Flashcard';
 import { useState } from 'react';
-import { Box } from '@mui/material';
+import { Container } from '@mui/material';
 
 const App = () => {
   
@@ -13,14 +13,14 @@ const App = () => {
   const [currentCard, setCurrentCard] = useState(randomCard());
 
   return (
-    <Box sx={{width: 500, height: '100%', marginX: 'auto', padding: 3, backgroundColor: ''}}>
+    <Container maxWidth="sm" sx={{paddingTop: 2}}>
       <Flashcard 
         acronym={currentCard.acronym} 
         fullform={currentCard.fullform} 
         definition={currentCard.definition} 
         next={() => setCurrentCard(randomCard())} 
       />
-    </Box>
+    </Container>
   );
 }
 
