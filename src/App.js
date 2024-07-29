@@ -1,7 +1,7 @@
 import acronyms from './syo-701-acronyms';
 import Flashcard from './Flashcard';
 import { useState } from 'react';
-import { Container, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 
 const App = () => {
   const shuffle = (array) => { 
@@ -17,21 +17,20 @@ const App = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   
   return (
-    <Container maxWidth="sm" sx={{padding: 4, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%'}}>
-      <div>
-      <Typography variant='h3'>Security+ 701</Typography>
+    <Container maxWidth="sm" sx={{padding: 4}}>
+      <Box sx={{marginBottom: 5}}>
+        <Typography variant='h3'>Security+ 701</Typography>
         <Typography variant='h3'>Acronym Flashcards</Typography>
-      </div>
-      <div>
-        <Typography variant='body2'gutterBottom textAlign='end'>{currentCardIndex + 1} / {totalNumberOfCards}</Typography>  
+      </Box>
+      <Box>
+        <Typography variant='body2' gutterBottom textAlign='end'>{currentCardIndex + 1} / {totalNumberOfCards}</Typography>  
         <Flashcard
-          sx={{marginBottom: 4}} 
           acronym={shuffledCards[currentCardIndex]?.acronym} 
           fullform={shuffledCards[currentCardIndex]?.fullform} 
           definition={shuffledCards[currentCardIndex]?.definition} 
           next={() => setCurrentCardIndex(i => i+1)} 
         />
-      </div>
+      </Box>
     </Container>
   );
 }
