@@ -28,6 +28,7 @@ const App = () => {
           acronym={shuffledCards[currentCardIndex]?.acronym} 
           fullform={shuffledCards[currentCardIndex]?.fullform} 
           definition={shuffledCards[currentCardIndex]?.definition} 
+          category={shuffledCards[currentCardIndex]?.category}
           next={() => setCurrentCardIndex(i => i+1)} 
         />
       </Box>

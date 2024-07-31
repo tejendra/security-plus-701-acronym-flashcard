@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, CardActions, CardContent, CardHeader, Typography } from "@mui/material";
 
-const Flashcard = ({acronym, fullform, definition, next, sx}) => {
+const Flashcard = ({acronym, fullform, definition, category, next, sx}) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -18,7 +18,9 @@ const Flashcard = ({acronym, fullform, definition, next, sx}) => {
           minHeight: '100px',
         }} 
         title={acronym}
-        titleTypographyProps={{display:'flex', justifyContent: 'center', fontSize: '3rem'}} />
+        titleTypographyProps={{display:'flex', justifyContent: 'center', fontSize: '3rem'}}
+        subheader={category} 
+        subheaderTypographyProps={{display:'flex', justifyContent: 'center', color:"inherit"}}/>
       
       
       {show && (
